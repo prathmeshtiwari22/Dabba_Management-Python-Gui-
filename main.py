@@ -1,5 +1,61 @@
 from tkinter import *
 
+
+
+
+def totalcost():
+    item1 =int(e_Aloo.get())
+    item2 =int(e_tikka.get())
+    item3 = int(e_pulao.get())
+    item4 = int(e_Bhature.get())
+    item5 = int(e_Biryani.get())
+    item6 = int(e_Thepla.get())
+    item7 = int(e_Dosa.get())
+    item8 = int(e_Paneer.get())
+    item9 = int(e_Upma.get())
+
+    item19 = int(e_ChickenCurry.get())
+    item20 = int(e_Biryani.get())
+    item21 = int(e_ButterChicken1.get())
+    item22 = int(e_FishTandoori.get())
+    item23 = int(e_MuttonRoganJosh.get())
+    item24 = int(e_LambKebabs.get())
+    item25 = int(e_ShrimpScampi.get())
+    item26 = int(e_PorkVindaloo.get())
+    item27 = int(e_ChickenSarwama.get())
+
+    item10 = int(e_Whisky.get())
+    item11 = int(e_Rum.get())
+    item12 = int(e_Beer.get())
+    item13 = int(e_Vodka.get())
+    item14 = int(e_Brandy.get())
+    item15 = int(e_Gin.get())
+    item16 = int(e_Tequila.get())
+    item17 = int(e_Cocktails.get())
+    item18 = int(e_Sake.get())
+
+    priceofVeg = (item1 * 100) + (item2 * 160) + (item3 * 110) + (item4 * 160) + (item5 * 101) + (item6 * 160) + (
+                item7 * 110) + (item8 * 160) + (item9 * 110)
+    priceofNonVeg = (item10 * 120) + (item11 * 260) + (item12 * 210) + (item13 * 260)\
+                                    + (item14 * 170) + (item15 * 460) + (item16 * 310) + (item17 * 650) + (item18 * 210)
+    priceofDrinks = (item10 * 1110) + (item11 * 1160) + (item12 * 2210) + (item13 * 2260) + (item14 * 3310) \
+                                    + (item15 * 2260) + (item16 * 3310) + (item17 * 8860) + (item18 * 7710)
+
+    costofVeg.set(str(priceofVeg)+'RS')
+    costofNonveg.set(str(priceofNonVeg)+'RS')
+    costofDrinks.set(str(priceofDrinks)+'RS')
+
+    subtotals=priceofDrinks+priceofVeg+priceofNonVeg
+    Subtotals.set(str(subtotals)+"RS")
+    ServiceTax.set("256 RS")
+
+    totalprice=subtotals+256
+    Totalcost.set(str(totalprice)+"RS")
+
+
+
+
+
 def Aloo():
     if var1.get()==1:
         textAloo.config(state=NORMAL)
@@ -179,22 +235,87 @@ def Sake():
         text_Sake.config(state=DISABLED)
         e_Sake.set('0')
 
+def ChickenCurry():
+    if var19.get() == 1:
+        text_ChickenCurry.config(state=NORMAL)
+        text_ChickenCurry.delete(0, END)
+        text_ChickenCurry.focus()
+    else:
+        text_ChickenCurry.config(state=DISABLED)
+        e_ChickenCurry.set('0')
+
+def MuttonBiryani():
+    if var20.get() == 1:
+        text_MuttonBiryani.config(state=NORMAL)
+        text_MuttonBiryani.delete(0, END)
+        text_MuttonBiryani.focus()
+    else:
+        text_MuttonBiryani.config(state=DISABLED)
+        e_MuttonBiryani.set('0')
+
+def ButterChicken():
+    if var21.get() == 1:
+        text_ButterChicken1.config(state=NORMAL)
+        text_ButterChicken1.delete(0, END)
+        text_ButterChicken1.focus()
+    else:
+        text_ButterChicken1.config(state=DISABLED)
+        e_ButterChicken1.set('0')
+
+def FishTandoori():
+    if var22.get() == 1:
+        text_FishTandoori.config(state=NORMAL)
+        text_FishTandoori.delete(0, END)
+        text_FishTandoori.focus()
+    else:
+        text_FishTandoori.config(state=DISABLED)
+        e_FishTandoori.set('0')
+
+def MuttonRoganJosh():
+    if var23.get() == 1:
+        text_RoganJosh.config(state=NORMAL)
+        text_RoganJosh.delete(0, END)
+        text_RoganJosh.focus()
+    else:
+        text_RoganJosh.config(state=DISABLED)
+        e_MuttonRoganJosh.set('0')
+
+def LambKebabs():
+    if var24.get() == 1:
+        text_LambKebabs.config(state=NORMAL)
+        text_LambKebabs.delete(0, END)
+        text_LambKebabs.focus()
+    else:
+        text_LambKebabs.config(state=DISABLED)
+        e_LambKebabs.set('0')
 
 
+def ShrimpScampi():
+    if var25.get() == 1:
+        text_ShrimpScampi.config(state=NORMAL)
+        text_ShrimpScampi.delete(0, END)
+        text_ShrimpScampi.focus()
+    else:
+        text_ShrimpScampi.config(state=DISABLED)
+        e_ShrimpScampi.set('0')
 
+def PorkVindaloo():
+    if var26.get() == 1:
+        text_PorkVindaloo.config(state=NORMAL)
+        text_PorkVindaloo.delete(0, END)
+        text_PorkVindaloo.focus()
+    else:
+        text_PorkVindaloo.config(state=DISABLED)
+        e_PorkVindaloo.set('0')
 
-
-
-
-
-
-
-
-
-
-
-
-
+def ChickenSarwana():
+    if var27.get() == 1:
+        text_ChickenShawarma.config(state=NORMAL)
+        text_ChickenShawarma.delete(0, END)
+        text_ChickenShawarma.focus()
+    else:
+        text_ChickenShawarma.config(state=DISABLED)
+        e_ChickenSarwama.set('0')
 
 
 
@@ -297,15 +418,15 @@ e_Cocktails = StringVar()
 e_Sake = StringVar()
 
 # Non-Veg Food
-e_ChickenTikka = StringVar()
-e_MuttonBiryani = StringVar()
-e_FishCurry = StringVar()
-e_TandooriChicken = StringVar()
-e_ButterChicken = StringVar()
-e_FishFry = StringVar()
 e_ChickenCurry = StringVar()
-e_LambChops = StringVar()
+e_MuttonBiryani = StringVar()
+e_ButterChicken1 = StringVar()
+e_FishTandoori = StringVar()
+e_MuttonRoganJosh = StringVar()
+e_LambKebabs = StringVar()
 e_ShrimpScampi = StringVar()
+e_PorkVindaloo=StringVar()
+e_ChickenSarwama = StringVar()
 
 costofNonveg=StringVar()
 costofVeg=StringVar()
@@ -329,15 +450,16 @@ e_Paneer.set('0')
 e_Upma.set('0')
 
 #For NON VEG
-e_ChickenTikka.set('0')
-e_MuttonBiryani.set('0')
-e_FishCurry.set('0')
-e_TandooriChicken.set('0')
-e_ButterChicken.set('0')
-e_FishFry.set('0')
 e_ChickenCurry.set('0')
-e_LambChops.set('0')
+e_MuttonBiryani.set('0')
+e_ButterChicken1.set('0')
+e_FishTandoori.set('0')
+e_MuttonRoganJosh.set('0')
+e_LambKebabs.set('0')
 e_ShrimpScampi.set('0')
+e_PorkVindaloo.set('0')
+e_ChickenSarwama.set('0')
+
 
 #For Drinks
 e_Whisky.set('0')
@@ -413,31 +535,33 @@ Sake.grid(row=8,column=0,sticky=W)
 
 #NONVEG FOODS
 # Non-Veg Foods
-ChickenCurry = Checkbutton(NonFoodF, text="Chicken Curry", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var19)
+ChickenCurry = Checkbutton(NonFoodF, text="Chicken Curry", font=('arial', 18, 'bold'), onvalue=1, offvalue=0,
+                           variable=var19,command=ChickenCurry)
 ChickenCurry.grid(row=0, column=0, sticky=W)
 
-Biryani = Checkbutton(NonFoodF, text="Biryani", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var20)
+Biryani = Checkbutton(NonFoodF, text="Biryani", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var20,command=MuttonBiryani)
 Biryani.grid(row=1, column=0, sticky=W)
 
-ButterChicken = Checkbutton(NonFoodF, text="Butter Chicken", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var21)
-ButterChicken.grid(row=2, column=0, sticky=W)
+ButterChicken1 = Checkbutton(NonFoodF, text="Butter Chicken", font=('arial', 18, 'bold'),
+                            onvalue=1, offvalue=0, variable=var21)
+ButterChicken1.grid(row=2, column=0, sticky=W)
 
-FishTandoori = Checkbutton(NonFoodF, text="Fish Tandoori", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var22)
+FishTandoori = Checkbutton(NonFoodF, text="Fish Tandoori", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var22,command=FishTandoori)
 FishTandoori.grid(row=3, column=0, sticky=W)
 
-MuttonRoganJosh = Checkbutton(NonFoodF, text="Mutton Rogan Josh", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var23)
+MuttonRoganJosh = Checkbutton(NonFoodF, text="Mutton Rogan Josh", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var23,command=MuttonRoganJosh)
 MuttonRoganJosh.grid(row=4, column=0, sticky=W)
 
-LambKebabs = Checkbutton(NonFoodF, text="Lamb Kebabs", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var24)
+LambKebabs = Checkbutton(NonFoodF, text="Lamb Kebabs", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var24,command=LambKebabs)
 LambKebabs.grid(row=5, column=0, sticky=W)
 
-ShrimpScampi = Checkbutton(NonFoodF, text="Shrimp Scampi", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var25)
+ShrimpScampi = Checkbutton(NonFoodF, text="Shrimp Scampi", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var25,command=ShrimpScampi)
 ShrimpScampi.grid(row=6, column=0, sticky=W)
 
-PorkVindaloo = Checkbutton(NonFoodF, text="Pork Vindaloo", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var26)
+PorkVindaloo = Checkbutton(NonFoodF, text="Pork Vindaloo", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var26,command=PorkVindaloo)
 PorkVindaloo.grid(row=7, column=0, sticky=W)
 
-ChickenShawarma = Checkbutton(NonFoodF, text="Chicken Shawarma", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var27)
+ChickenShawarma = Checkbutton(NonFoodF, text="Chicken Shawarma", font=('arial', 18, 'bold'), onvalue=1, offvalue=0, variable=var27,command=ChickenSarwana)
 ChickenShawarma.grid(row=8, column=0, sticky=W)
 
 
@@ -507,32 +631,32 @@ text_Sake.grid(row=8, column=1)
 
 
 # EntryFields for the top 9 non-veg foods in NonFoodF frame
-text_ChickenTikka = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_ChickenTikka)
-text_ChickenTikka.grid(row=0, column=1)
+text_ChickenCurry = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_ChickenCurry)
+text_ChickenCurry.grid(row=0, column=1)
 
 text_MuttonBiryani = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_MuttonBiryani)
 text_MuttonBiryani.grid(row=1, column=1)
 
-text_FishCurry = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_FishCurry)
-text_FishCurry.grid(row=2, column=1)
+text_ButterChicken1 = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_ButterChicken1)
+text_ButterChicken1.grid(row=2, column=1)
 
-text_TandooriChicken = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_TandooriChicken)
-text_TandooriChicken.grid(row=3, column=1)
+text_FishTandoori = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_FishTandoori)
+text_FishTandoori.grid(row=3, column=1)
 
-text_ButterChicken = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_ButterChicken)
-text_ButterChicken.grid(row=4, column=1)
+text_RoganJosh = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_MuttonRoganJosh)
+text_RoganJosh.grid(row=4, column=1)
 
-text_FishFry = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_FishFry)
-text_FishFry.grid(row=5, column=1)
-
-text_ChickenCurry = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_ChickenCurry)
-text_ChickenCurry.grid(row=6, column=1)
-
-text_LambChops = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_LambChops)
-text_LambChops.grid(row=7, column=1)
+text_LambKebabs = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_LambKebabs)
+text_LambKebabs.grid(row=5, column=1)
 
 text_ShrimpScampi = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_ShrimpScampi)
-text_ShrimpScampi.grid(row=8, column=1)
+text_ShrimpScampi.grid(row=6, column=1)
+
+text_PorkVindaloo = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_PorkVindaloo)
+text_PorkVindaloo.grid(row=7, column=1)
+
+text_ChickenShawarma = Entry(NonFoodF, font=('arial', 18, 'bold'), bd=7, width=6, state=DISABLED, textvariable=e_ChickenSarwama)
+text_ChickenShawarma.grid(row=8, column=1)
 
 #COST Labels
 labelOFCostN = Label(costF, text='COST OF NONVEG', font=('arial', 16, 'bold'), fg='red', bg='orange')
@@ -578,7 +702,7 @@ textTOTAL.grid(row=2, column=3)
 # Buttons
 
 
-buttonTotal = Button(buttonFrame, text='TL', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5)
+buttonTotal = Button(buttonFrame, text='TL', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5,command=totalcost)
 buttonTotal.grid(row=0, column=0)
 
 buttonReceipt = Button(buttonFrame, text='RE', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5)
