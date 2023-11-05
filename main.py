@@ -1,9 +1,318 @@
+from datetime import time
+from random import random
 from tkinter import *
+from tkinter import messagebox, filedialog
+import random
+import datetime
+import datetime
 
+from django.contrib.sites import requests
+
+
+def send():
+    if textR.get(1.0, END) == '\n':
+        pass
+    else:
+        def send_msg():
+            message = textarea.get(1.0, END)
+            number = numberfield.get()
+            auth = ''
+            url = ''
+
+            params = {
+                'authorization': auth,
+                'message': message,
+                'numbers': number,
+                'sender-id': '',
+                'route': 'p',
+                'language': 'english'
+            }
+            response = requests.get(url, params=params)
+            dic = response.json()
+            result = dic.get('return')
+            if result == True:
+                messagebox.showinfo('Send Successfully', 'Message sent succesfully')
+
+            else:
+                messagebox.showerror('Error', 'Something went wrong')
+
+        root2 = Toplevel()
+
+        root2.title("Send Bill")
+        root2.config(bg='orange')
+        root2.geometry('485x620+50+50')
+
+        logoImage = PhotoImage(file='Img.jpg')
+        label = Label(root2, image=logoImage, bg='red4')
+        label.pack(pady=5)
+
+        numberLabel = Label(root2, text='Mobile Number', font=('arial', 18, 'bold underline'), bg='red4', fg='white')
+        numberLabel.pack(pady=5)
+
+        numberfield = Entry(root2, font=('helvetica', 22, 'bold'), bd=3, width=24)
+        numberfield.pack(pady=5)
+
+        billLabel = Label(root2, text='Bill Details', font=('arial', 18, 'bold underline'), bg='red4', fg='white')
+        billLabel.pack(pady=5)
+
+        textarea = Text(root2, font=('arial', 12, 'bold'), bd=3, width=42, height=14)
+        textarea.pack(pady=5)
+        textarea.insert(END, 'Receipt Ref:\t\t' + billnumber + '\t\t' + date + '\n\n')
+
+        if costofVeg.get() != '0 Rs':
+            textarea.insert(END, f'Cost Of Veg\t\t\t{priceofVeg}Rs\n')
+        if costofNonveg.get() != '0 Rs':
+            textarea.insert(END, f'Cost Of Non\t\t\t{priceofNonVeg}Rs\n')
+        if costofDrinks.get() != '0 Rs':
+            textarea.insert(END, f'Cost Of Drinks\t\t\t{priceofDrinks}Rs\n')
+
+        textarea.insert(END, f'Sub Total\t\t\t{subtotals}Rs\n')
+        textarea.insert(END, f'Service Tax\t\t\t{256}Rs\n')
+        textarea.insert(END, f'Total Cost\t\t\t{subtotals + 256}Rs\n')
+
+        sendButton = Button(root2, text='SEND', font=('arial', 19, 'bold'), bg='white', fg='red4', bd=7, relief=GROOVE
+                            , command=send_msg)
+        sendButton.pack(pady=5)
+
+        root2.mainloop()
+
+
+def receipt():
+    global billnumber, date
+    if costofNonveg.get() != '' or costofVeg.get() != '' or costofDrinks.get() != '':
+        textR.delete(1.0, END)
+        x = random.randint(100, 10000)
+        billnumber = 'BILL' + str(x)
+        current_datetime = datetime.datetime.now()
+        date = current_datetime.strftime('%d/%m/%Y')
+        textR.insert(END, 'Receipt Ref:\t\t' + billnumber + '\t\t' + date + '\n')
+        textR.insert(END, '***************************************************************\n')
+        textR.insert(END, 'Items:\t\t Cost Of Items(Rs)\n')
+        textR.insert(END, '***************************************************************\n')
+        if e_Aloo.get() != '0':
+            # Continue with the rest of your code for generating the receipt
+            textR.insert(END,f'Aloo Paratha\t\t\t{int(e_Aloo.get())*10}\n\n')
+
+        if e_tikka.get()!='0':
+            textR.insert(END,f'Paneer Tikka\t\t\t{int(e_tikka.get())*60}\n\n')
+
+        if e_pulao.get()!='0':
+            textR.insert(END,f'Pulao\t\t\t{int(e_pulao.get())*100}\n\n')
+
+        if e_Bhature.get() != '0':
+            textR.insert(END, f'Chole Bhature:\t\t\t{int(e_Bhature.get()) * 30}\n\n')
+
+        if e_Biryani.get() != '0':
+            textR.insert(END, f'Vegetable Biryani:\t\t\t{int(e_Biryani.get()) * 50}\n\n')
+
+        if e_Thepla.get() != '0':
+            textR.insert(END, f'Thepla:\t\t\t{int(e_Thepla.get()) * 100}\n\n')
+
+        if e_Dosa.get() != '0':
+            textR.insert(END, f'Dosa:\t\t\t{int(e_Dosa.get()) * 40}\n\n')
+
+        if e_Paneer.get() != '0':
+            textR.insert(END, f'Paneer:\t\t\t{int(e_Paneer.get()) * 120}\n\n')
+
+        if e_Upma.get() != '0':
+            textR.insert(END, f'Upma:\t\t\t{int(e_Upma.get()) * 120}\n\n')
+
+        if e_Whisky.get() != '0':
+            textR.insert(END, f'Whisky:\t\t\t{int(e_Whisky.get()) * 50}\n\n')
+
+        if e_Rum.get() != '0':
+            textR.insert(END, f'Rum:\t\t\t{int(e_Rum.get()) * 40}\n\n')
+
+        if e_Beer.get() != '0':
+            textR.insert(END, f'Beer:\t\t\t{int(e_Beer.get()) * 80}\n\n')
+
+        if e_Vodka.get() != '0':
+            textR.insert(END, f'Vodka:\t\t\t{int(e_Vodka.get()) * 30}\n\n')
+
+        if e_Brandy.get() != '0':
+            textR.insert(END, f'Brandy:\t\t\t{int(e_Brandy.get()) * 40}\n\n')
+
+        if e_Gin.get() != '0':
+            textR.insert(END, f'Gin:\t\t\t{int(e_Gin.get()) * 60}\n\n')
+
+        if e_Tequila.get() != '0':
+            textR.insert(END, f'Tequila:\t\t\t{int(e_Tequila.get()) * 20}\n\n')
+
+        if e_Cocktails.get() != '0':
+            textR.insert(END, f'Cocktails:\t\t\t{int(e_Cocktails.get()) * 50}\n\n')
+
+        if e_Sake.get() != '0':
+            textR.insert(END, f'Sake:\t\t\t{int(e_Sake.get()) * 80}\n\n')
+
+        if e_ChickenCurry.get() != '0':
+            textR.insert(END, f'Curry:\t\t\t{int(e_ChickenCurry.get()) * 400}\n\n')
+
+        if e_MuttonBiryani.get() != '0':
+            textR.insert(END, f'Mutton:\t\t\t{int(e_MuttonBiryani.get()) * 300}\n\n')
+
+        if e_ButterChicken1.get() != '0':
+            textR.insert(END, f'ButterChicken:\t\t\t{int(e_ButterChicken1.get()) * 500}\n\n')
+
+        if e_FishTandoori.get() != '0':
+            textR.insert(END, f'Fish:\t\t\t{int(e_FishTandoori.get()) * 450}\n\n')
+
+        if e_MuttonRoganJosh.get() != '0':
+            textR.insert(END, f'JOSH:\t\t\t{int(e_MuttonRoganJosh.get()) * 800}\n\n')
+
+        if e_LambKebabs.get() != '0':
+            textR.insert(END, f'Kebabs:\t\t\t{int(e_LambKebabs.get()) * 620}\n\n')
+
+        if e_ShrimpScampi.get() != '0':
+            textR.insert(END, f'ShrimpScampi:\t\t\t{int(e_ShrimpScampi.get()) * 700}\n\n')
+
+        if e_PorkVindaloo.get() != '0':
+            textR.insert(END, f'Pork:\t\t\t{int(e_PorkVindaloo.get()) * 550}\n\n')
+
+        if e_ChickenSarwama.get() != '0':
+            textR.insert(END, f'Sarwama:\t\t\t{int(e_ChickenSarwama.get()) * 550}\n\n')
+
+        textR.insert(END,'***************************************************************\n')
+        if costofVeg.get()!='0 Rs':
+            textR.insert(END,f'Cost Of VEG\t\t\t{priceofVeg}Rs\n\n')
+        if costofNonveg.get() != '0 Rs':
+            textR.insert(END,f'Cost Of NONVEG\t\t\t{priceofNonVeg}Rs\n\n')
+        if costofDrinks.get() != '0 Rs':
+            textR.insert(END,f'Cost Of DRINKS\t\t\t{priceofDrinks}Rs\n\n')
+
+        textR.insert(END, f'Sub Total\t\t\t{subtotals}Rs\n\n')
+        textR.insert(END, f'Service Tax\t\t\t{260}Rs\n\n')
+        textR.insert(END, f'Total Cost\t\t\t{totalprice}Rs\n\n')
+        textR.insert(END,'***************************************************************\n')
+
+    else:
+        messagebox.showerror('Error','No Item Is selected')
+
+
+
+
+def save():
+    if textR.get(1.0,END)=='\n':
+        pass
+    else:
+        url=filedialog.asksaveasfile(mode='w',defaultextension='.txt')
+        if url==None:
+            pass
+        else:
+
+            bill_data=textR.get(1.0,END)
+            url.write(bill_data)
+            url.close()
+            messagebox.showinfo('GRATEFUL','THANKS FOR COMING')
+
+
+
+
+
+
+
+
+
+def reset():
+    textR.delete(1.0,END)
+    e_Aloo.set('0')
+    e_tikka.set('0')
+    e_pulao.set('0')
+    e_Bhature.set('0')
+    e_Biryani.set('0')
+    e_Thepla.set('0')
+    e_Dosa.set('0')
+    e_Paneer.set('0')
+    e_Upma.set('0')
+
+    e_Whisky.set('0')
+    e_Rum.set('0')
+    e_Beer.set('0')
+    e_Vodka.set('0')
+    e_Brandy.set('0')
+    e_Gin.set('0')
+    e_Tequila.set('0')
+    e_Cocktails.set('0')
+    e_Sake.set('0')
+
+    e_ChickenCurry.set('0')
+    e_MuttonBiryani.set('0')
+    e_ButterChicken1.set('0')
+    e_FishTandoori.set('0')
+    e_MuttonRoganJosh.set('0')
+    e_LambKebabs.set('0')
+    e_ShrimpScampi.set('0')
+    e_PorkVindaloo.set('0')
+    e_ChickenSarwama.set('0')
+
+    textAloo.config(state=DISABLED)
+    textTikka.config(state=DISABLED)
+    textPulao.config(state=DISABLED)
+    textBhature.config(state=DISABLED)
+    textBiryani.config(state=DISABLED)
+    textThepla.config(state=DISABLED)
+    textDosa.config(state=DISABLED)
+    textPaneer.config(state=DISABLED)
+    textUpma.config(state=DISABLED)
+
+    text_Whiskey.config(state=DISABLED)
+    text_Rum.config(state=DISABLED)
+    text_Beer.config(state=DISABLED)
+    text_Vodka.config(state=DISABLED)
+    text_Brandy.config(state=DISABLED)
+    text_Gin.config(state=DISABLED)
+    text_Tequila.config(state=DISABLED)
+    text_Cocktails.config(state=DISABLED)
+    text_Sake.config(state=DISABLED)
+
+    text_ChickenCurry.config(state=DISABLED)
+    text_MuttonBiryani.config(state=DISABLED)
+    text_ButterChicken1.config(state=DISABLED)
+    text_FishTandoori.config(state=DISABLED)
+    text_RoganJosh.config(state=DISABLED)
+    text_LambKebabs.config(state=DISABLED)
+    text_ShrimpScampi.config(state=DISABLED)
+    text_PorkVindaloo.config(state=DISABLED)
+    text_ChickenShawarma.config(state=DISABLED)
+
+    var1.set(0)
+    var2.set(0)
+    var3.set(0)
+    var4.set(0)
+    var5.set(0)
+    var6.set(0)
+    var7.set(0)
+    var8.set(0)
+    var9.set(0)
+    var10.set(0)
+    var11.set(0)
+    var12.set(0)
+    var13.set(0)
+    var14.set(0)
+    var15.set(0)
+    var16.set(0)
+    var17.set(0)
+    var18.set(0)
+    var19.set(0)
+    var20.set(0)
+    var21.set(0)
+    var22.set(0)
+    var23.set(0)
+    var24.set(0)
+    var25.set(0)
+    var26.set(0)
+    var27.set(0)
+
+    costofNonveg.set('')
+    costofVeg.set('')
+    costofDrinks.set('')
+    Subtotals.set('')
+    ServiceTax.set('')
+    Totalcost.set('')
 
 
 
 def totalcost():
+    global priceofVeg,priceofNonVeg,priceofDrinks,subtotals,totalprice
     item1 =int(e_Aloo.get())
     item2 =int(e_tikka.get())
     item3 = int(e_pulao.get())
@@ -705,16 +1014,16 @@ textTOTAL.grid(row=2, column=3)
 buttonTotal = Button(buttonFrame, text='TL', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5,command=totalcost)
 buttonTotal.grid(row=0, column=0)
 
-buttonReceipt = Button(buttonFrame, text='RE', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5)
+buttonReceipt = Button(buttonFrame, text='RE', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5,command=receipt)
 buttonReceipt.grid(row=0, column=1)
 
-buttonSave = Button(buttonFrame, text='SE', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5)
+buttonSave = Button(buttonFrame, text='SE', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5,command=save)
 buttonSave.grid(row=0, column=2)
 
-buttonSend = Button(buttonFrame, text='SD', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5)
+buttonSend = Button(buttonFrame, text='SD', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5,command=send)
 buttonSend.grid(row=0, column=3)
 
-buttonReset = Button(buttonFrame, text='RT', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5)
+buttonReset = Button(buttonFrame, text='RT', font=('arial', 8, 'bold'), fg='white', bg='red4', bd=3,padx=5,command=reset)
 buttonReset.grid(row=0, column=4)
 
 #textarea
